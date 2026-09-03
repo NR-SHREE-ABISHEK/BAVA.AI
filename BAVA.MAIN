@@ -22,7 +22,7 @@ def listen():
        return ""
 speak("bava Activated")
 while True:
-      mode = input("\nType 'voice' for voice or type your command: ").lower()
+    mode = input("\nType 'voice' for voice or type your command: ").lower()
     if mode == "voice":
         command = listen()
     else:
