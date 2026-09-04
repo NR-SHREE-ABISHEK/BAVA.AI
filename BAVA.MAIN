@@ -20,7 +20,7 @@ def listen():
     except:
        speak("Sorry, enakku puriyala")
        return ""
-speak("bava Activated")
+speak("BAVA Activated")
 while True:
     mode = input("\nType 'voice' for voice or type your command: ").lower()
     if mode == "voice":
