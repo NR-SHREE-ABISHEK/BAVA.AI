@@ -3,7 +3,15 @@ import os
 import pyttsx3
 import speech_recognition as sr
 
-engine = pyttsx3.init()
+engine = pyttsx3.init("sapi5")
+engine.setProperty("rate",175)
+voices=engine.getProperty("voices")
+if voices:
+    engine.setProperty("voices",voices[1].id)
+import os
+import pyttsx3
+import speech_recognition as sr
+
 def speak(text):
     print("BAVA:", text)
     engine.say(text)
