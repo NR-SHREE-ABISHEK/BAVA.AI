@@ -73,6 +73,210 @@ while True:
     elif "open maps" in command:
         speak("Opening Maps")
         os.system("start https://maps.google.com/")
+    elif "open instagram" in command or "open insta" in command:
+
+        speak("Opening Instagram")
+        os.system("start https://www.instagram.com/")
+
+
+    elif "open a2d" in command or "a2d youtube" in command:
+
+        speak("Opening A2D YouTube channel")
+        os.system("start https://www.youtube.com/@a2dchannel")
+
+
+    elif "open youtube" in command or command == "youtube":
+
+        speak("Opening YouTube")
+        os.system("start https://www.youtube.com/")
+
+
+    elif "open google" in command:
+
+        speak("Opening Google")
+        os.system("start https://www.google.com/")
+
+
+    elif "open gmail" in command:
+
+        speak("Opening Gmail")
+        os.system("start https://mail.google.com/")
+
+
+    elif "open whatsapp" in command:
+
+        speak("Opening WhatsApp")
+        os.system("start https://web.whatsapp.com/")
+
+
+    elif "open chatgpt" in command:
+
+        speak("Opening ChatGPT")
+        os.system("start https://chatgpt.com/")
+
+
+    elif "open maps" in command or "open google maps" in command:
+
+        speak("Opening Google Maps")
+        os.system("start https://maps.google.com/")
+
+
+    elif "open linkedin" in command:
+
+        speak("Opening LinkedIn")
+        os.system("start https://www.linkedin.com/")
+
+
+    elif "open telegram" in command:
+
+        speak("Opening Telegram")
+        os.system("start https://web.telegram.org/")
+
+
+    elif "open discord" in command:
+
+        speak("Opening Discord")
+        os.system("start https://discord.com/app")
+
+
+    elif "open facebook" in command:
+
+        speak("Opening Facebook")
+        os.system("start https://www.facebook.com/")
+
+
+    elif "open twitter" in command or "open x" in command:
+
+        speak("Opening X")
+        os.system("start https://x.com/")
+
+
+    elif "open reddit" in command:
+
+        speak("Opening Reddit")
+        os.system("start https://www.reddit.com/")
+
+
+    elif "open amazon" in command:
+
+        speak("Opening Amazon")
+        os.system("start https://www.amazon.in/")
+
+
+    elif "open flipkart" in command:
+
+        speak("Opening Flipkart")
+        os.system("start https://www.flipkart.com/")
+
+
+
+    elif "open drive" in command or "open google drive" in command:
+
+        speak("Opening Google Drive")
+        os.system("start https://drive.google.com/")
+
+
+    elif "open docs" in command or "open google docs" in command:
+
+        speak("Opening Google Docs")
+        os.system("start https://docs.google.com/")
+
+
+    elif "open classroom" in command:
+
+        speak("Opening Google Classroom")
+        os.system("start https://classroom.google.com/")
+
+
+    elif "open canva" in command:
+
+        speak("Opening Canva")
+        os.system("start https://www.canva.com/")
+
+
+    elif "open github copilot" in command:
+
+        speak("Opening GitHub Copilot")
+        os.system("start https://github.com/features/copilot")
+
+
+    elif "open hackerrank" in command:
+
+        speak("Opening HackerRank")
+        os.system("start https://www.hackerrank.com/")
+
+
+    elif "open leetcode" in command:
+
+        speak("Opening LeetCode")
+        os.system("start https://leetcode.com/")
+
+
+    elif "open w3schools" in command:
+
+        speak("Opening W3Schools")
+        os.system("start https://www.w3schools.com/")
+
+
+    elif "open python" in command:
+
+        speak("Opening Python website")
+        os.system("start https://www.python.org/")
+
+
+    elif "open stackoverflow" in command or "open stack overflow" in command:
+
+        speak("Opening Stack Overflow")
+        os.system("start https://stackoverflow.com/")
+
+
+    elif "open vscode" in command or "open vs code" in command:
+
+        speak("Opening Visual Studio Code website")
+        os.system("start https://code.visualstudio.com/")
+
+
+    elif "open file explorer" in command or "open files" in command:
+
+        speak("Opening File Explorer")
+        os.system("explorer")
+
+
+    elif "open notepad" in command:
+
+        speak("Opening Notepad")
+        os.system("notepad")
+
+
+    elif "open calculator" in command or "open calc" in command:
+
+        speak("Opening Calculator")
+        os.system("calc")
+
+
+    elif "open paint" in command:
+
+        speak("Opening Paint")
+        os.system("mspaint")
+
+
+    elif "open settings" in command:
+
+        speak("Opening Windows Settings")
+        os.system("start ms-settings:")
+
+
+    elif "open command prompt" in command or "open cmd" in command:
+
+        speak("Opening Command Prompt")
+        os.system("start cmd")
+
+
+    elif "open task manager" in command:
+
+        speak("Opening Task Manager")
+        os.system("start taskmgr")
+
     elif "bye" in command or "exit" in command:
         speak("Goodbye boss")
         break
