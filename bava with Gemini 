@@ -1,1 +1,316 @@
-c
+
+import datetime
+import os
+import webbrowser
+import urllib.parse
+import pyttsx3
+import speech_recognition as sr
+from google import genai
+
+API_KEY = os.getenv("GEMINI_API_KEY")
+
+if API_KEY:
+    client = genai.Client(api_key=API_KEY)
+else:
+    client = None
+
+MODEL = "gemini-flash-latest"
+
+engine = pyttsx3.init("sapi5")
+engine.setProperty("rate", 175)
+
+voices = engine.getProperty("voices")
+
+if voices:
+    voice_index = 1 if len(voices) > 1 else 0
+    engine.setProperty("voice", voices[voice_index].id)
+
+
+def speak(text):
+    print("BAVA:", text)
+    engine.say(text)
+    engine.runAndWait()
+
+
+def listen():
+    r = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source)
+
+    try:
+        command = r.recognize_google(audio)
+        print("You:", command)
+        return command.lower()
+
+    except Exception:
+        speak("Sorry, enakku puriyala")
+        return ""
+
+
+def ask_gemini(question):
+
+    if client is None:
+        speak("Gemini API key is missing")
+        return
+
+    try:
+        speak("Gemini AI is thinking")
+
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=(
+                "You are BAVA, a friendly AI assistant. "
+                "Your creator is Abishek. "
+                "Give clear, simple and helpful answers. "
+                "For programming questions, explain step by step.\n\n"
+                "User: " + question
+            )
+        )
+
+        answer = response.text
+
+        if answer:
+            speak(answer)
+        else:
+            speak("I couldn't generate an answer")
+
+    except Exception as e:
+        print("Gemini Error:", e)
+        speak("Sorry, Gemini is not responding right now")
+
+
+speak("BAVA Activated")
+
+if client:
+    speak("Gemini AI connected")
+else:
+    speak("Gemini API key not found")
+
+
+while True:
+
+    mode = input(
+        "\nType 'voice' for voice or type your command: "
+    ).lower()
+
+    if mode == "voice":
+        command = listen()
+    else:
+        command = mode
+
+    if not command:
+        continue
+
+    if "time" in command:
+
+        now = datetime.datetime.now()
+        current_time = now.strftime("%I:%M %p")
+
+        speak("Current time is " + current_time)
+
+    elif "who are you" in command:
+
+        speak("I am BAVA, an AI assistant powered by Python and Gemini")
+
+    elif "say about my self" in command:
+
+        speak(
+            "You are a young developer aiming to create AI "
+            "and your name is Abishek"
+        )
+
+    elif "open spotify" in command:
+
+        speak("Vaa pulla vaa")
+        webbrowser.open("https://open.spotify.com/")
+
+    elif "open my github" in command:
+
+        speak("Nee massu thala, wait pannu thala")
+        webbrowser.open("https://github.com/HR-SHREE-ABISHEK")
+
+    elif "open github" in command:
+
+        speak("Opening GitHub")
+        webbrowser.open("https://github.com/")
+
+    elif "open instagram" in command or "open insta" in command:
+
+        speak("Opening Instagram")
+        webbrowser.open("https://www.instagram.com/")
+
+    elif "open a2d" in command or "a2d youtube" in command:
+
+        speak("Opening A2D YouTube channel")
+        webbrowser.open("https://www.youtube.com/@a2dchannel")
+
+    elif "open youtube" in command or command == "youtube":
+
+        speak("Wait pannu da pulla")
+        webbrowser.open("https://www.youtube.com/")
+
+    elif "open google" in command:
+
+        speak("Opening Google")
+        webbrowser.open("https://www.google.com/")
+
+    elif "open gmail" in command:
+
+        speak("Opening Gmail")
+        webbrowser.open("https://mail.google.com/")
+
+    elif "open whatsapp" in command:
+
+        speak("Opening WhatsApp")
+        webbrowser.open("https://web.whatsapp.com/")
+
+    elif "open chatgpt" in command:
+
+        speak("Opening ChatGPT")
+        webbrowser.open("https://chatgpt.com/")
+
+    elif "open maps" in command or "open google maps" in command:
+
+        speak("Opening Google Maps")
+        webbrowser.open("https://maps.google.com/")
+
+    elif "open linkedin" in command:
+
+        speak("Opening LinkedIn")
+        webbrowser.open("https://www.linkedin.com/")
+
+    elif "open telegram" in command:
+
+        speak("Opening Telegram")
+        webbrowser.open("https://web.telegram.org/")
+
+    elif "open discord" in command:
+
+        speak("Opening Discord")
+        webbrowser.open("https://discord.com/app")
+
+    elif "open facebook" in command:
+
+        speak("Opening Facebook")
+        webbrowser.open("https://www.facebook.com/")
+
+    elif "open twitter" in command or "open x" in command:
+
+        speak("Opening X")
+        webbrowser.open("https://x.com/")
+
+    elif "open reddit" in command:
+
+        speak("Opening Reddit")
+        webbrowser.open("https://www.reddit.com/")
+
+    elif "open amazon" in command:
+
+        speak("Opening Amazon")
+        webbrowser.open("https://www.amazon.in/")
+
+    elif "open flipkart" in command:
+
+        speak("Opening Flipkart")
+        webbrowser.open("https://www.flipkart.com/")
+
+    elif "open drive" in command or "open google drive" in command:
+
+        speak("Opening Google Drive")
+        webbrowser.open("https://drive.google.com/")
+
+    elif "open docs" in command or "open google docs" in command:
+
+        speak("Opening Google Docs")
+        webbrowser.open("https://docs.google.com/")
+
+    elif "open classroom" in command:
+
+        speak("Opening Google Classroom")
+        webbrowser.open("https://classroom.google.com/")
+
+    elif "open canva" in command:
+
+        speak("Opening Canva")
+        webbrowser.open("https://www.canva.com/")
+
+    elif "open github copilot" in command:
+
+        speak("Opening GitHub Copilot")
+        webbrowser.open("https://github.com/features/copilot")
+
+    elif "open hackerrank" in command:
+
+        speak("Opening HackerRank")
+        webbrowser.open("https://www.hackerrank.com/")
+
+    elif "open leetcode" in command:
+
+        speak("Opening LeetCode")
+        webbrowser.open("https://leetcode.com/")
+
+    elif "open w3schools" in command:
+
+        speak("Opening W3Schools")
+        webbrowser.open("https://www.w3schools.com/")
+
+    elif "open python" in command:
+
+        speak("Opening Python website")
+        webbrowser.open("https://www.python.org/")
+
+    elif "open stackoverflow" in command or "open stack overflow" in command:
+
+        speak("Opening Stack Overflow")
+        webbrowser.open("https://stackoverflow.com/")
+
+    elif "open vscode" in command or "open vs code" in command:
+
+        speak("Opening Visual Studio Code")
+        webbrowser.open("https://code.visualstudio.com/")
+
+    elif "open file explorer" in command or "open files" in command:
+
+        speak("Opening File Explorer")
+        os.system("explorer")
+
+    elif "open notepad" in command:
+
+        speak("Opening Notepad")
+        os.system("notepad")
+
+    elif "open calculator" in command or "open calc" in command:
+
+        speak("Opening Calculator")
+        os.system("calc")
+
+    elif "open paint" in command:
+
+        speak("Opening Paint")
+        os.system("mspaint")
+
+    elif "open settings" in command:
+
+        speak("Opening Windows Settings")
+        os.system("start ms-settings:")
+
+    elif "open command prompt" in command or "open cmd" in command:
+
+        speak("Opening Command Prompt")
+        os.system("start cmd")
+
+    elif "open task manager" in command:
+
+        speak("Opening Task Manager")
+        os.system("start taskmgr")
+
+    elif "bye" in command or "exit" in command:
+
+        speak("Goodbye boss")
+        break
+
+    else:
+
+        ask_gemini(command)
